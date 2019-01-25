@@ -27,84 +27,22 @@ Joulescope works with a wide range of targets, not just this Arduino target.
 Joulescope supports targets that draw from 0 to 3 Amps at 0 to 15 Volts.
 
 
-## Supplies
-
-To repeat this experiment using off-the-shelf parts, you need:
-
-*   [Joulescope](https://www.joulescope.com) and 
-    included USB cable.
-*   Host PC: Windows 10 (Linux and Mac support coming soon)
-*   Joulescope host software - [download](https://www.joulescope.com/download/)
-*   A 3.3V Arduino Pro Mini - 
-    [Sparkfun](https://www.sparkfun.com/products/11114),
-    [Adafruit](https://www.adafruit.com/product/2377)
-*   A USB to 3.3V power supply with banana jacks
-
-You can use Sparkfun [Banana to IC Hook Cables](https://www.sparkfun.com/products/506)
-to connect the Arduino Pro Mini to Joulescope.  For a more permanent and
-reliable connection, you can solder wires with banana jacks.
-
-If you need to prepare a new Arduino Pro Mini you need:
-
-*   FTDI Basic - [SparkFun](https://www.sparkfun.com/products/9873)
-*   [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-*   6 pin right angle header - [SparkFun](https://www.sparkfun.com/products/553)
-*   Soldering iron, solder, and solder wick
-
-
 ## Procedure
 
-### Prepare the Arduino Pro Mini
+### Setup
 
-If you have an Arduino Pro Mini Target from Jetperch, then skip to the next
-section.
-
-*   Program the Arduino Pro Mini.
-*   Desolder the Arduino Pro Mini "Power isolation jumper" 
-    (see [schematic](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Arduino-Pro-Mini-v14.pdf))
-    located near GND adjacent to digital pin 2.
-*   Solder the 6-pin right-angle header to the end of the Arduino Pro Mini.
-    However, you may be able to program the Arduino by just holding the 
-    connector in place.  You can apply gentle pressure to ensure
-    that all pins make electrical connection with the holes.
-*   Connect the Arduino Pro Mini to the FTDI Basic and then connect the USB mini
-    cable to your PC.  
-*   Program the Arduino.  For details, follow this 
-    [SparkFun Guide](https://learn.sparkfun.com/tutorials/using-the-arduino-pro-mini-33v).
-*   Press the reset button and verify that the LED flashes.
-
-
-### Connect the Power Supply
-
-If you have the Joulescope demonstration power supply, connect the micro USB
-cable to your PC using the provided USB cable.  Connect the banana jacks to 
-the Joulescope IN port.  Make sure you connect "-" to "-" and "+" to "+".
-Skip to the next section.
-
-Otherwise, you can use any 3.3V supply for this demo.
-A bench supply set to 3.3V works great if you have one. 
-The FTDI Basic's 3.3V output also works sufficiently. 
-You can construct the USB to 3.3V power supply using off-the-shelf parts:
-
-*   Sparkfun [Breadboard Power Supply Stick @ 3.3V](https://www.sparkfun.com/products/13157)
-*   Sparkfun [Hydra Power Cable](https://www.sparkfun.com/products/11579)
-*   Sparkfun [Banana to IC Hook Cables](https://www.sparkfun.com/products/506)
-
-
-### Connect the Arduino Pro Mini Target
+*   Connect Joulescope to your host computer over USB.
+*   Start the Joulescope host software.  
+    [download](https://www.joulescope.com/download/)
+*   Connect the Arduino Pro Mini Target to Joulescope
+    *   Connect the Arduino Pro Mini GND to Joulescope OUT -.
+    *   Connect the Arduino Pro Mini VCC to Joulescope OUT +.
+*   Connect a +3.3V power supply to Joulescope.  Be sure to observe the
+    correct polarity.  If you have the Evaluation Kit, insert the banana 
+    plugs into Joulescope and connect the USB micro connector to an available
+    USB port on your host computer using the provided cable.
     
-Connect the Arduino Pro Mini GND to Joulescope OUT -.
-Connect the Arduino Pro Mini VCC to Joulescope OUT +.
-
-
-### Prepare Joulescope
-
-*   [Download](https://www.joulescope.com/download/) and install the
-    Joulescope User Interface (UI).
-*   Connect Joulescope to your host computer using the provided USB cable.
-*   Start the Joulescope User Interface.
-
-
+    
 ### Perform the test
 
 *   Press the reset button on the Arduino Pro Mini.
@@ -116,3 +54,79 @@ Connect the Arduino Pro Mini VCC to Joulescope OUT +.
 
 You can repeat the test by pressing the Arduino reset button or by 
 connecting the Arduino digital "2" signal to ground.
+
+
+## Supplies
+
+If you have the Joulescope Evaluation Kit 1, you have everything that you need.
+The evaluation kit includes:
+
+*   1 USB to +3.3V power supply
+*   1 USB A to Micro B cable
+*   1 target device: a modified Arduino Pro Mini
+
+Follow the steps below to create your own setup.
+
+
+### Prepare the Arduino Pro Mini
+
+If you have an Arduino Pro Mini Target from the Joulescope Evaluation Kit 1,
+skip this section.
+
+You will need:
+
+*   A 3.3V Arduino Pro Mini - 
+    [Sparkfun](https://www.sparkfun.com/products/11114),
+    [Adafruit](https://www.adafruit.com/product/2377)
+*   FTDI Basic - [SparkFun](https://www.sparkfun.com/products/9873)
+    (used to program the Arduino Pro Mini)
+*   [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+*   6 pin through header - [SparkFun](https://www.sparkfun.com/products/553),
+    but most common 0.1" header will work.
+*   Soldering iron, solder, and solder wick
+*   Arduino to Joulescope Banana Jacks, such as Sparkfun 
+    [Banana to IC Hook Cables](https://www.sparkfun.com/products/506)
+
+
+And here is the procedure:
+
+*   Program the Arduino Pro Mini.
+    *   Clone this repo or download the sketch directly
+    *   Launch the Arduino IDE and open joulescope_arduino_target.ino.
+    *   Connect the FTDI basic to your PC.
+    *   Select Tools -> Board -> "Arduino Pro or Pro Mini"
+    *   Select Tools -> Processor -> "ATmega 328P (3.3V, 8 MHz)"
+    *   Select Tools -> Port -> (serial port for the FTDI basic)
+    *   Insert the header into the FTDI basic.  Align correctly with the
+        Arduino Pro Mini.  Insert into Arduino Pro Mini and hold in place.
+        Apply slight sideways pressure to make connection.  Hold while pressing
+        the "Upload" button in the Arduino IDE.  Continue to hold until the
+        programming succeeds.
+    *   If you run into any issues, see this excellent
+        [SparkFun Guide](https://learn.sparkfun.com/tutorials/using-the-arduino-pro-mini-33v).
+*   Press the reset button and verify that the LED flashes.
+*   Desolder the Arduino Pro Mini "Power isolation jumper" 
+    (see [schematic](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Arduino-Pro-Mini-v14.pdf))
+    located near GND adjacent to digital pin 2.
+
+
+
+## Prepare a power supply
+
+If you have an USB to +3.3V supply from the Joulescope Evaluation Kit 1,
+skip this section.
+
+The FTDI Basic's 3.3V output works sufficiently. Simply use 
+Sparkfun [Banana to IC Hook Cables](https://www.sparkfun.com/products/506) to
+connect it to Joulescope.
+
+Most 3.3V supplies will work since the Arduino Pro Mini draws 10 mA max.
+You can use a bench supply if you have one.  If you do not have a bench supply,
+here is one reasonably cost-effective approach.
+
+*   Sparkfun [Breadboard Power Supply Stick @ 3.3V](https://www.sparkfun.com/products/13157)
+*   Sparkfun [Hydra Power Cable](https://www.sparkfun.com/products/11579)
+*   Sparkfun [Banana to IC Hook Cables](https://www.sparkfun.com/products/506)
+
+For a more permanent and reliable connection, you can solder wires with 
+banana jacks.
